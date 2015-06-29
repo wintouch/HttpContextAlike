@@ -76,5 +76,11 @@ namespace HttpContextAlike
         {
             Response = new HttpResponse(response);
         }
+
+        // to be removed
+        public void SetRequest(IHttpRequest req)
+        {
+            this.Request = req;
+        }
     }
 }
