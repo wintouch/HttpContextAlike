@@ -51,12 +51,12 @@ namespace HttpContextAlike
             CallContext.LogicalSetData(HttpContextProperty, value);
         }
 
-        public DateTime Timestamp { get; protected set; }
-        public IHttpRequest Request { get; protected set; }
-        public IHttpResponse Response { get; protected set; }
-        public IDictionary Items { get; protected set; }
-        public IPrincipal User { get; protected set; }
-        public object Inner { get; protected set; }
+        public DateTime Timestamp { get; private set; }
+        public IHttpRequest Request { get; private set; }
+        public IHttpResponse Response { get; private set; }
+        public IDictionary Items { get; private set; }
+        public IPrincipal User { get; private set; }
+        public object Inner { get; private set; }
 
         public HttpContext()
         {
@@ -81,6 +81,12 @@ namespace HttpContextAlike
         public void SetRequest(IHttpRequest req)
         {
             this.Request = req;
+        }
+
+        // to be removed
+        public void SetPrincipal(IPrincipal user)
+        {
+            this.User = user;
         }
     }
 }
